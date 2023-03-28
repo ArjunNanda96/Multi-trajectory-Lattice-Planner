@@ -1,0 +1,42 @@
+lattice_planner_node:
+  ros__parameters:
+    track_specifier: 'skirkanich_front_sunday'
+    toppath: '/sim_ws/src/lattice_planner_pkg'
+    mappath: '/sim_ws/src/f1tenth_gym_ros/maps/skirkanich_front_sunday'
+    odometry_topic: '/ego_racecar/odom'
+    trajectory_topic: '/lattice_planner/local_traj'
+    global_trajectory_topic: '/lattice_planner/global_traj'
+    global_traj_vis_topic: '/lattice_planner/global_traj_vis_topic'
+    local_traj_vis_topic: '/lattice_planner/local_traj_vis_topic'
+    visual_mode: False
+    log_mode: False
+    publish_global: False
+    yaw_offset: -1.5708
+    start_vel: 3.0
+
+pure_pursuit_node:
+  ros__parameters:
+    sparse_waypoint_filename: 'traj_race_cl_skirkanich4'
+    drive_topic: '/drive'
+    trajectory_topic: '/lattice_planner/local_traj'
+    global_trajectory_topic: '/lattice_planner/global_traj'
+    odometry_topic: '/ego_racecar/odom'
+    waypoint_vis_topic: '/pure_pursuit/waypoint'
+    lookahead_method: 'curvature'
+    use_global_traj: False
+    steering_angle_bound: 0.4
+    desired_speed: 4.5
+    min_speed: 1.0
+    proportional_control: 0.8
+    steering_angle_factor: 0.6
+    speed_factor: 1.0
+    waypoint_distance: 0.1
+    min_lookahead: 1.2 # 1.6
+    max_lookahead: 1.6 # 1.6
+
+waypoint_logger_service:
+  ros__parameters:
+    odometry_topic: '/ego_racecar/odom'
+    lidar_scan_topic: '/scan'
+    log_filepath: '/sim_ws/src/lattice_planner_pkg/inputs/waypoints/sample_filename.csv'
+
